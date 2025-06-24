@@ -1,8 +1,13 @@
-﻿namespace BikesStore.BackendServer.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace BikesStore.BackendServer.Data.Entities;
+
+public partial class Brand
 {
-    public class Brand
-    {
-        public int Brand_ID { get; set; }
-        public string Brand_Name { get; set; }
-    }
+    public int BrandId { get; set; }
+
+    public string BrandName { get; set; } = null!;
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

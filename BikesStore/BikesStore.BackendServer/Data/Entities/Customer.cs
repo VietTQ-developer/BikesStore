@@ -1,15 +1,27 @@
-﻿namespace BikesStore.BackendServer.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace BikesStore.BackendServer.Data.Entities;
+
+public partial class Customer
 {
-    public class Customer
-    {
-        public int Customer_ID { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip_Code { get; set; }
-    }
+    public int CustomerId { get; set; }
+
+    public string FirstName { get; set; } = null!;
+
+    public string LastName { get; set; } = null!;
+
+    public string? Phone { get; set; }
+
+    public string Email { get; set; } = null!;
+
+    public string? Street { get; set; }
+
+    public string? City { get; set; }
+
+    public string? State { get; set; }
+
+    public string? ZipCode { get; set; }
+
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

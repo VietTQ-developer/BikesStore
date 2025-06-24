@@ -1,9 +1,17 @@
-﻿namespace BikesStore.BackendServer.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace BikesStore.BackendServer.Data.Entities;
+
+public partial class Stock
 {
-    public class Stock
-    {
-        public int Store_ID { get; set; }
-        public int Product_ID { get; set; }
-        public int Quantity { get; set; }
-    }
+    public int StoreId { get; set; }
+
+    public int ProductId { get; set; }
+
+    public int? Quantity { get; set; }
+
+    public virtual Product Product { get; set; } = null!;
+
+    public virtual Store Store { get; set; } = null!;
 }

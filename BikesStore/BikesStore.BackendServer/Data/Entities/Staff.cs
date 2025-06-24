@@ -1,14 +1,31 @@
-﻿namespace BikesStore.BackendServer.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace BikesStore.BackendServer.Data.Entities;
+
+public partial class Staff
 {
-    public class Staff
-    {
-        public int Staff_ID { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Active { get; set; }
-        public int Store_ID { get; set; }
-        public string Manager_ID { get; set; }
-    }
+    public int StaffId { get; set; }
+
+    public string FirstName { get; set; } = null!;
+
+    public string LastName { get; set; } = null!;
+
+    public string Email { get; set; } = null!;
+
+    public string? Phone { get; set; }
+
+    public byte Active { get; set; }
+
+    public int StoreId { get; set; }
+
+    public int? ManagerId { get; set; }
+
+    public virtual ICollection<Staff> InverseManager { get; set; } = new List<Staff>();
+
+    public virtual Staff? Manager { get; set; }
+
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual Store Store { get; set; } = null!;
 }
